@@ -2,7 +2,6 @@ package util;
 
 /**
  * A timer for measuring elapsed wall time.
- * @author Michael Crawford
  */
 public class Timer {
   private long startTime = 0L;

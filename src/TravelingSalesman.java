@@ -1,12 +1,12 @@
 
 import java.io.FileNotFoundException;
 import java.text.MessageFormat;
+import util.Timer;
 import util.menu.BaseMenuItem;
 import util.menu.Menu;
 
 /**
  * Traveling salesman program.
- * @author Michael Crawford
  */
 public class TravelingSalesman {
   private Menu menu;
@@ -92,5 +92,16 @@ public class TravelingSalesman {
       throw new IllegalArgumentException(
               "mutationRate must be a percentage [0.0,1.0]");
     }
+    
+    Population pop = new Population(cities, mutationRate);
+    Timer timer = new Timer();
+    
+    timer.start();
+    pop.evolve(generations);
+    timer.stop();
+    
+    System.out.println("Evolved " + generations + " generations in " + 
+            timer.elapsedSec() + " seconds");
+    System.out.println("Solution: " + pop.getBest());
   }
 }

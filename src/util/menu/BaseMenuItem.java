@@ -3,7 +3,6 @@ package util.menu;
 /**
  * A basic implementation of {@link MenuItem}. Requires only that {@link 
  * MenuItem#execute() execute()} be implemented in the subclass.
- * @author Michael Crawford
  */
 public abstract class BaseMenuItem implements MenuItem {
   private String ID;

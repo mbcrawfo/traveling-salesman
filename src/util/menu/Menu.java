@@ -9,7 +9,6 @@ import java.util.TreeMap;
  * MenuItem} objects. Add the desired items to the menu, and call {@link 
  * Menu#execute() execute()} to run the menu. Note that a {@code Menu} is also a
  * {@code MenuItem}, so menus may be nested.
- * @author Michael Crawford
  */
 public class Menu extends BaseMenuItem {
   private Scanner input = new Scanner(System.in);

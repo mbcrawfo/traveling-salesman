@@ -2,7 +2,6 @@ package util.menu;
 
 /**
  * Defines the interface used by items which are stored in a menu.
- * @author Michael Crawford
  */
 public interface MenuItem {
   /**

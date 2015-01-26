@@ -6,14 +6,15 @@ import java.util.Scanner;
 
 /**
  * Holds a table of distances between cities.
- * @author Michael Crawford
  */
 public class CityTable {
   private final int numCities;
   private final ArrayList<ArrayList<Integer>> cities;
   
   /**
-   * Loads a table of cities from a file.
+   * Loads a table of cities from a file.  The file format is a single int 
+   * on the first line defining the number of cities, followed by N lines, 
+   * each with N ints separated by spaces defining the distances in the table.
    * @param path
    * @return The loaded table or null if there was an error.
    * @throws FileNotFoundException 
