@@ -1,7 +1,9 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -50,6 +52,37 @@ public class CityTable {
   }
   
   /**
+   * Generate a table with random distances between the cities.
+   * @param numCities
+   * @return 
+   */
+  public static CityTable generateRandom(int numCities) {
+    if (numCities <= 0) {
+      throw new IllegalArgumentException("numCities <= 0");
+    }
+    
+    final int minDistance = 1;
+    final int maxDistance = 10;
+    final Random rand = new Random();
+    CityTable result = new CityTable(numCities);
+    
+    for (int i = 0; i < numCities; i++) {
+      for (int j = 0; j <= i; j++) {
+        if (i == j) {
+          result.cities.get(i).set(j, 0);
+        }
+        else {
+          int distance = rand.nextInt(maxDistance - minDistance + 1) + minDistance;
+          result.cities.get(i).set(j, distance);
+          result.cities.get(j).set(i, distance);
+        }
+      }
+    }
+    
+    return result;
+  }
+  
+  /**
    * Creates the table.
    * @param numCities 
    */
@@ -88,5 +121,24 @@ public class CityTable {
     }
     
     return cities.get(cityA).get(cityB);
+  }
+  
+  /**
+   * Saves the city data to a file.
+   * @param path
+   * @throws FileNotFoundException 
+   */
+  public void save(String path) throws FileNotFoundException {    
+    try (PrintWriter pw = new PrintWriter(path)) {
+      pw.write(numCities + "\n");
+      
+      for (int i = 0; i < numCities; i++) {
+        for (int j = 0; j < numCities; j++) {
+          pw.write(cities.get(i).get(j) + " ");
+        }
+        pw.write("\n");
+      }
+      pw.write("\n");
+    }
   }
 }
